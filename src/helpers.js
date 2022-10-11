@@ -1,11 +1,10 @@
-export function formatPrice(cents) {
-  return (cents).toLocaleString("en-IN", {
-    style: "currency",
-    currency: "INR"
-  });
+export const getCart = () => {
+    return new Promise((resolve, reject) => {
+        const cart = window.localStorage.getItem('cart');
+        resolve(cart);
+    })
 }
 
-export function formatToppings(arr) {
-  const joined = arr.join(', ');
-  return joined.charAt(0).toUpperCase() + joined.slice(1);
+export const storeCart = (cart) => {
+    window.localStorage.setItem('cart', JSON.stringify(cart));
 }
